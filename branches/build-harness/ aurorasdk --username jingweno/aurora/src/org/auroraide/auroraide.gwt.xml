@@ -1,0 +1,16 @@
+<module>
+	<inherits name="com.google.gwt.user.User"/>
+	<inherits name="org.auroraide.client.ui.codePressEditor.CodePressEditor"/>
+	<inherits name="com.google.gwt.core.Core"/>
+	<inherits name="org.auroraide.client.ui.simpleSortableTable.SimpleSortableTable"/>
+	<servlet path="/CompileCode" class="org.auroraide.server.compiler.CompileCodeImpl"/>
+	<servlet path="/FileBuilder" class="org.auroraide.server.fileBuilder.FileBuilderImpl"/>
+	<servlet path="/RunProgram" class="org.auroraide.server.compiler.RunProgramImpl"/>
+	<entry-point class="org.auroraide.client.auroraide"/>
+	
+	<stylesheet src="auroraide.css"/>
+	
+	
+
+	
+</module>

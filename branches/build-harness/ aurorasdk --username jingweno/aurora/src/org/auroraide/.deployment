@@ -1,0 +1,5 @@
+#Thu Dec 06 02:34:23 PST 2007
+war.name=auroraide.war
+compiler.style=OBFUSCATED
+server.path=D\:\\Apache Software Foundation\\Tomcat 6.0\\webapps
+compiler.memory.max=64m

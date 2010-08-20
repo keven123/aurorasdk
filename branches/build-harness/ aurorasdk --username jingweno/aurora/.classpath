@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/eclipseJ2EE/plugins/org.eclipse.jdt.core_3.3.1.v_780_R33x.jar"/>
+	<classpathentry kind="lib" path="E:/eclipselib/gwt-windows-1.4.61/gwt-windows-1.4.61/gwt-servlet.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/eclipse/commons-cli-1.1/commons-cli-1.1/commons-cli-1.1.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/eclipse/commons-jci-1.0-bin/lib/commons-jci-core-1.0.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/eclipse/commons-lang-2.3/commons-lang-2.3.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/eclipse/commons-logging-1.1/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="E:/eclipselib/mysql-connector-java-5.1.5/mysql-connector-java-5.1.5-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Program Files/Java/jdk1.6.0_03/lib/tools.jar"/>
+	<classpathentry kind="lib" path="E:/Downloads/eclipse/commons-io-1.3.2/commons-io-1.3.2.jar"/>
+	<classpathentry kind="lib" path="E:/eclipselib/gwt-windows-1.4.61/gwt-windows-1.4.61/gwt-user.jar"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

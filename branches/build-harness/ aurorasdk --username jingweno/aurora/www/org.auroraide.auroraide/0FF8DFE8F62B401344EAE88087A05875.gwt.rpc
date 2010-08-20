@@ -1,0 +1,5 @@
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true
+java.lang.String, true
+org.auroraide.client.ClassUnit, true
+org.auroraide.client.ProblemUnit, true
+[Lorg.auroraide.client.ProblemUnit;, true
