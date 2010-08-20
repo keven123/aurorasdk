@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="ImageViewer" default="all" basedir="D:\Documents and Settings\Owen\workspace\aurora">
+	<description>
+		This is build file for GWT module 'org.auroraide.auroraide' deployment.
+		GWT Designer generates it each time when you initiate deployment.
+		
+		You can use this file later for manual deployment, but keep in mind, that
+		classpath is hardcoded in it, so after changes in classpath you should
+		regenerate build file.
+	</description>
+
+	<property name="gwt.home" value="D:\gwt" />
+	<property name="gwt.module.id" value="org.auroraide.auroraide" />
+	<property name="war.name" value="auroraide.war" />
+
+	<target name="jars" description="Package up the module project and required projects as jars">
+		<delete dir="@dot" />
+		<mkdir dir="@dot/${gwt.module.id}/WEB-INF/lib" />
+		<!--=== aurora ===-->
+		<jar destfile="@dot/${gwt.module.id}/WEB-INF/lib/aurora.jar">
+			<fileset dir="D:/Documents and Settings/Owen/workspace/aurora/src">
+				<include name="**"/>
+			</fileset>
+			<fileset dir="D:/Documents and Settings/Owen/workspace/aurora/WebRoot/WEB-INF/classes">
+				<include name="**/*.class"/>
+			</fileset>
+		</jar>
+		<copy todir="@dot/${gwt.module.id}/WEB-INF/lib">
+			<fileset file="D:\eclipse\plugins\org.eclipse.jdt.core_3.3.1.v_780_R33x.jar"/>
+			<fileset file="D:\gwt\gwt-servlet.jar"/>
+			<fileset file="E:\Downloads\eclipse\commons-cli-1.1\commons-cli-1.1\commons-cli-1.1.jar"/>
+			<fileset file="E:\Downloads\eclipse\commons-io-1.3.2-bin\commons-io-1.3.2\commons-io-1.3.2.jar"/>
+			<fileset file="E:\Downloads\eclipse\commons-jci-1.0-bin\commons-jci-1.0-bin\lib\commons-jci-core-1.0.jar"/>
+			<fileset file="E:\Downloads\eclipse\commons-lang-2.3\commons-lang-2.3\commons-lang-2.3.jar"/>
+			<fileset file="E:\Downloads\eclipse\commons-logging-1.1\commons-logging-1.1\commons-logging-1.1.jar"/>
+			<fileset file="E:\Downloads\eclipse\mysql-connector-java-5.1.5\mysql-connector-java-5.1.5-bin.jar"/>
+			<fileset file="D:\Program Files\Java\jdk1.6.0_03\lib\tools.jar"/>
+		</copy>		
+	</target>
+
+	<target name="gwt-compile" description="Compile to JavaScript">
+		<java classname="com.google.gwt.dev.GWTCompiler" fork="yes" failonerror="true" maxmemory="64m">
+			<classpath>
+				<pathelement location="D:/Documents and Settings/Owen/workspace/aurora/src" />
+				<pathelement location="D:/Documents and Settings/Owen/workspace/aurora/WebRoot/WEB-INF/classes" />
+				<pathelement location="D:/gwt/gwt-user.jar" />
+				<pathelement location="D:/gwt/gwt-servlet.jar" />
+				<pathelement location="E:/Downloads/eclipse/commons-cli-1.1/commons-cli-1.1/commons-cli-1.1.jar" />
+				<pathelement location="E:/Downloads/eclipse/commons-io-1.3.2-bin/commons-io-1.3.2/commons-io-1.3.2.jar" />
+				<pathelement location="E:/Downloads/eclipse/commons-jci-1.0-bin/commons-jci-1.0-bin/lib/commons-jci-core-1.0.jar" />
+				<pathelement location="E:/Downloads/eclipse/commons-lang-2.3/commons-lang-2.3/commons-lang-2.3.jar" />
+				<pathelement location="E:/Downloads/eclipse/commons-logging-1.1/commons-logging-1.1/commons-logging-1.1.jar" />
+				<pathelement location="E:/Downloads/eclipse/mysql-connector-java-5.1.5/mysql-connector-java-5.1.5-bin.jar" />
+				<pathelement location="D:/Program Files/Java/jdk1.6.0_03/lib/tools.jar" />
+				<pathelement location="D:/gwt/gwt-dev-windows.jar" />
+			</classpath>
+			<arg value="-style"/>
+			<arg value="OBFUSCATED"/>
+			<arg value="-out" />
+			<arg file="@dot" />
+			<arg value="${gwt.module.id}" />
+		</java>
+	</target>
+
+	<target name="web-xml">
+		<mkdir dir="@dot/${gwt.module.id}/WEB-INF" />
+		<echo file="@dot/${gwt.module.id}/WEB-INF/web.xml"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<display-name>Aurora SDK</display-name>
+	<description>Powered by Owen</description>
+	<welcome-file-list>
+		<welcome-file>auroraide.html</welcome-file>
+	</welcome-file-list>
+	<servlet>
+		<display-name>FileDownloadServlet</display-name>
+		<servlet-name>FileDownloadServlet</servlet-name>
+		<servlet-class>org.auroraide.server.fileDownloader.FileDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FileDownloadServlet</servlet-name>
+		<url-pattern>/FileDownloadServlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>org.auroraide.server.compiler.CompileCodeImpl</servlet-name>
+		<servlet-class>org.auroraide.server.compiler.CompileCodeImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>org.auroraide.server.compiler.CompileCodeImpl</servlet-name>
+		<url-pattern>/CompileCode</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>org.auroraide.server.fileBuilder.FileBuilderImpl</servlet-name>
+		<servlet-class>org.auroraide.server.fileBuilder.FileBuilderImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>org.auroraide.server.fileBuilder.FileBuilderImpl</servlet-name>
+		<url-pattern>/FileBuilder</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>org.auroraide.server.compiler.RunProgramImpl</servlet-name>
+		<servlet-class>org.auroraide.server.compiler.RunProgramImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>org.auroraide.server.compiler.RunProgramImpl</servlet-name>
+		<url-pattern>/RunProgram</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+]]></echo>
+	</target>
+
+	<target name="war" depends="jars, gwt-compile, web-xml">
+		<delete file="${war.name}" />
+		<copy file="${gwt.home}/gwt-servlet.jar" todir="@dot/${gwt.module.id}/WEB-INF/lib" />
+		<jar destfile="${war.name}" basedir="@dot/${gwt.module.id}" duplicate="preserve" />
+		<delete dir="@dot" />
+	</target>
+	
+	<target name="deploy" depends="war">
+		<move file="${war.name}" todir="D:/Apache Software Foundation/Tomcat 6.0/webapps" />
+	</target>
+
+	<target name="all" depends="deploy" />
+
+</project>
